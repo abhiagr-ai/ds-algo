@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * 14.11
  */
-public class A_01_DFS {
+public class A_04_DFS {
 
     public static void main() {
         dfs_visit(4, List.of(

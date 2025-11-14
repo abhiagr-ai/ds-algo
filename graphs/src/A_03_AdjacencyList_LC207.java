@@ -1,11 +1,7 @@
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * channel: codeStoryWithMK
  */
-public class A_01_AdjacencyList_LC207 {
+public class A_03_AdjacencyList_LC207 {
     static void main() {
         System.out.println(
                 """

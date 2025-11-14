@@ -5,7 +5,7 @@ import java.util.Map;
 /**
  * 14.11
  */
-public class A_01_LC207_Solution {
+public class A_02_LC207 {
 
     public static void main() {
         canFinish(4, List.of(
