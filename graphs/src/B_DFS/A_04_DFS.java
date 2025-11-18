@@ -1,3 +1,5 @@
+package B_DFS;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +11,7 @@ import java.util.Map;
 public class A_04_DFS {
 
     public static void main() {
+        //int[][] prereq = {{1,2},{2},{0,3},{3}};
         dfs_visit(4, List.of(
                 List.of(1, 2, 3),  // 0-> 1,2, 3
                 List.of(2), // 1 -> 2
