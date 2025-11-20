@@ -1,10 +1,10 @@
-package D_Detect_Cycle.undirected;
+package D_Detect_Cycle.a_undirected;
 
 import util.GetAdjList;
 
 import java.util.*;
 
-public class D_01_BFS_CYCLE_DISCONNECTED {
+public class C_BFS_CYCLE_DISCONNECTED {
     static void main() {
         // edge list only, vertices can be different
         int[][] edges = {{0,1},{1,2},{1,3},{0,3},{2,4},{3,4},{5,6},{6,7},{7,5}};

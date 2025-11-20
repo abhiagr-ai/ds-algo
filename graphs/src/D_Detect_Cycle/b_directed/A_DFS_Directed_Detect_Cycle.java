@@ -1,11 +1,11 @@
-package D_Detect_Cycle.directed;
+package D_Detect_Cycle.b_directed;
 
 import util.GetAdjList;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class DFS_Directed_Detect_Cycle {
+public class A_DFS_Directed_Detect_Cycle {
     static void main() {
         // edge list only, vertices can be different
         int[][] edges = {{0, 1}, {2, 1}};
@@ -13,6 +13,16 @@ public class DFS_Directed_Detect_Cycle {
         System.out.println("cycle detected? " + dfs_prep(V, edges));
     }
 
+    /**
+     *   0 -----> 1 <---- 2
+     *    bool[] visited <----- across all dfs calls
+     *    bool[] inCurrentRecursion  <---- only covers a single dfs call
+     *
+     *   0 ---> 1 both are marked true in visited in 1st dfs recursion
+     *   but once that dfs is complete, inCurrentRecursion should be false
+     *
+     *   2 will fall in 2nd recursion call
+     */
     static boolean dfs_prep(int v, int[][] edges) {
         List<Integer>[] al = GetAdjList.getDirected(edges, v);
         boolean[] visited = new boolean[v];
@@ -40,6 +50,7 @@ public class DFS_Directed_Detect_Cycle {
                 System.out.println("CYCLE FOUND: u:"+ u + " neighbour: "+neighbour+ " visited:"+ Arrays.toString(visited) + " inCurrentRecursion:"+ Arrays.toString(inCurrentRecursion));
                 return true;
             }
+            // if not visited, then we can call dfs, and if that returns true... it's a cycle
             if (!visited[neighbour] && dfs(al, visited, inCurrentRecursion, neighbour)) {
                 System.out.println("CYCLE FOUND: u:"+ u + " neighbour: "+neighbour+ " visited:"+ Arrays.toString(visited) + " inCurrentRecursion:"+ Arrays.toString(inCurrentRecursion));
                 return true;

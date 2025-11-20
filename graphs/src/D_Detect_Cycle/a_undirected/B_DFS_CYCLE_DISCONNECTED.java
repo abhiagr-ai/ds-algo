@@ -1,42 +1,49 @@
-package D_Detect_Cycle.undirected;
+package D_Detect_Cycle.a_undirected;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class D_01_DFS_CYCLE {
+public class B_DFS_CYCLE_DISCONNECTED {
     static void main() {
-        int[][] edges = {{0,1},{1,2},{1,3},{2,4},{3,4}};
-        int V = edges.length;
-        dfs_prep(V, edges);
+        // edge list only, vertices can be different
+        int[][] edges = {{0,1},{1,2},{1,3},{2,4},{3,4},{5,6},{6,7},{7,5}};
+        int V = 8;
+        int cycleCount = dfs_prep(V, edges);
+        System.out.println("cycle count "+ cycleCount);
     }
 
-    static void dfs_prep(int V, int[][] edges) {
-        // Declare
-        List[] al = new ArrayList[V];
-        // Init
-        for(int i=0; i< V; i++){
-            al[i] = new ArrayList<Integer>();
+    private static ArrayList<Integer>[] getLists(int V, int[][] edges) {
+        ArrayList<Integer>[] al = new ArrayList[V];
+        for(int i = 0; i< V; i++){
+            al[i] = new ArrayList<>();
         }
-        // prepare
         for(int[] edge: edges){
             Integer u = edge[0];
             Integer v = edge[1];
             al[u].add(v);
             al[v].add(u);
         }
-        System.out.println(Arrays.stream(al).toList());
-        // [[1], [0, 2, 3], [1, 4], [1, 4], [2, 3]]
-        boolean[] visited = new boolean[V];
-        System.out.println(Arrays.toString(visited));
-        // [false, false, false, false, false]
-        int startNode =0;
-        if(dfs(startNode, visited, al, -1)){
-            System.out.println("CYCLE DETECTED");
-        };
-        //
-        System.out.println(Arrays.toString(visited));
+        return al;
     }
+
+    static int dfs_prep(int V, int[][] edges) {
+        ArrayList<Integer>[] al = getLists(V, edges);
+        boolean[] visited = new boolean[V];
+        int cycleCount = 0;
+        for(int j=0; j< V; j++){
+            if(!visited[j]) {
+                System.out.println("##############################----DFS----- start for j="+j);
+                if (dfs(j, visited, al, -1)) {
+                    System.out.println("CYCLE DETECTED");
+                    cycleCount++;
+                }
+                System.out.println(Arrays.toString(visited));
+            }
+        }
+        return cycleCount;
+    }
+
 
     static boolean dfs(int startNode, boolean[] visited, List<Integer>[] al, int parent){
         System.out.println("-----dfs: startNode:"+startNode+ " visited"+ Arrays.toString(visited) + " parent:"+ parent);
@@ -55,7 +62,6 @@ public class D_01_DFS_CYCLE {
             }
             // visiting non parent node
             if(dfs(neighbour, visited, al, startNode)){
-                System.out.println("it has cycle------");
                 return true;
             }
         }
