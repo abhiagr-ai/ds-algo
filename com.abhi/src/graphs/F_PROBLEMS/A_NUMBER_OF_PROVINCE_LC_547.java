@@ -1,0 +1,65 @@
+package graphs.F_PROBLEMS;
+
+import java.util.*;
+
+/**
+ * There are n cities. Some of them are connected, while some are not.
+ * If city a is connected directly with city b, and city b is connected directly with city c, then city a is connected indirectly with city c.
+ *
+ * A province is a group of directly or indirectly connected cities and no other cities outside of the group.
+ *
+ * You are given an n x n matrix isConnected where isConnected[i][j] = 1
+ * if the ith city and the jth city are directly connected, and isConnected[i][j] = 0 otherwise.
+ * Return the total number of provinces.
+ * Example 1:
+ * Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+ * Output: 2
+ */
+public class A_NUMBER_OF_PROVINCE_LC_547 {
+    static void main() {
+
+        int[][] isConnected = {{1,1,0}, {1,1,0},{0,0,1}};
+        //    0 1 2
+        //    ------
+        // 0  1 1 0
+        // 1  1 1 0
+        // 2  0 0 1
+
+
+        int n = isConnected.length;
+        List<Integer>[] adj = new ArrayList[n];
+        for(int i =0; i < n; i++){
+            adj[i] = new ArrayList<>();
+        }
+
+        for(int i =0; i< n ; i++){
+            for (int j =0; j < n; j++){
+                if(isConnected[i][j]==1){
+                    adj[j].add(i);
+                    adj[i].add(j);
+                }
+            }
+        }
+
+        boolean[] visited = new boolean[n];
+        System.out.println(Arrays.toString(adj));
+        int count = 0;
+        for(int i=0; i < n; i++){
+            if(!visited[i]){
+                dfs(adj, visited, 0);
+                count++;
+            }
+        }
+        System.out.println("No of provinces"+count);
+    }
+
+    static void dfs(List<Integer>[] adj, boolean[] visited, int u){
+        visited[u] = true;
+        for(int v: adj[u]){
+            if(!visited[v]){
+                dfs(adj, visited, v);
+            }
+        }
+
+    }
+}

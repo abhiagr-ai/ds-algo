@@ -1,8 +1,7 @@
-package A_01_Representation;
+package graphs.A_01_Representation;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class A_04_Adj {
     static void main() {

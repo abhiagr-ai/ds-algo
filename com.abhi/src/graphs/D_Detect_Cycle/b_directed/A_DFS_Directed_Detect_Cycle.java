@@ -1,6 +1,6 @@
-package D_Detect_Cycle.b_directed;
+package graphs.D_Detect_Cycle.b_directed;
 
-import util.GetAdjList;
+import graphs.util.GetAdjList;
 
 import java.util.Arrays;
 import java.util.List;

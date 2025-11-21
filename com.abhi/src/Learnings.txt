@@ -1,0 +1,19 @@
+
+//aa
+Common Use Case - Grouping:
+java
+Map<String, List<String>> groups = new HashMap<>();
+
+// Traditional way
+if (!groups.containsKey("fruits")) {
+        groups.put("fruits", new ArrayList<>());
+        }
+        groups.get("fruits").add("apple");
+
+// With computeIfAbsent
+groups
+  .computeIfAbsent("fruits", k -> new ArrayList<>())
+  .add("apple");
+//
+groups.computeIfAbsent("fruits", k -> new ArrayList<>()).add("banana");
+//

@@ -1,4 +1,4 @@
-package C_BFS;
+package graphs.C_BFS;
 
 import java.util.*;
 

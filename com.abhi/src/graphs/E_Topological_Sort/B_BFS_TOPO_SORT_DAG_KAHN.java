@@ -1,6 +1,6 @@
-package E_Topological_Sort;
+package graphs.E_Topological_Sort;
 
-import util.GetAdjList;
+import graphs.util.GetAdjList;
 
 import java.util.*;
 

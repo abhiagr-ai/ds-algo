@@ -1,6 +1,6 @@
-package D_Detect_Cycle.a_undirected;
+package graphs.D_Detect_Cycle.a_undirected;
 
-import util.GetAdjList;
+import graphs.util.GetAdjList;
 
 import java.util.*;
 

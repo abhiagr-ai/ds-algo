@@ -1,4 +1,4 @@
-package D_Detect_Cycle.a_undirected;
+package graphs.D_Detect_Cycle.a_undirected;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,7 +1,6 @@
-package util;
+package graphs.util;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public final class GetAdjList {
     public static ArrayList<Integer>[] get(int[][] edges, int V){

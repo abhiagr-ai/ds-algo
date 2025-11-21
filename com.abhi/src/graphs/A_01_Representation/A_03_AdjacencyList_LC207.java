@@ -1,4 +1,4 @@
-package A_01_Representation;
+package graphs.A_01_Representation;
 
 /**
  * channel: codeStoryWithMK

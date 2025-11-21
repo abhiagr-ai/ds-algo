@@ -1,4 +1,4 @@
-package B_DFS;
+package graphs.B_DFS;
 
 import java.util.Arrays;
 import java.util.HashMap;
