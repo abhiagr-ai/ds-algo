@@ -8,9 +8,18 @@ import java.util.List;
 public class A_DFS_Directed_Detect_Cycle {
     static void main() {
         // edge list only, vertices can be different
+        // test1 0 -----> 1 <---- 2
         int[][] edges = {{0, 1}, {2, 1}};
         int V = 3;
-        System.out.println("cycle detected? " + dfs_prep(V, edges));
+        System.out.println("1. cycle detected? " + dfs_prep(V, edges));
+
+        System.out.println("----------------------------");
+        // test 2 0--> 1 --> 2
+        //        |----------|
+        int[][] edges2 = {{0, 1}, {1, 2}, {0,2}};
+        int V2 = 3;
+        System.out.println("2. cycle detected? " + dfs_prep(V2, edges2));
+
     }
 
     /**
@@ -56,7 +65,9 @@ public class A_DFS_Directed_Detect_Cycle {
                 return true;
             }
         }
+        // ****
         inCurrentRecursion[u] = false;
+        System.out.println("returning u:"+ u +" visited:"+ Arrays.toString(visited) + " inCurrentRecursion:"+ Arrays.toString(inCurrentRecursion));
         return false;
     }
 }

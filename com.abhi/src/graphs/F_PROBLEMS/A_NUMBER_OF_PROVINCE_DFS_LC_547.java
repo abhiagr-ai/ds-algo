@@ -15,7 +15,7 @@ import java.util.*;
  * Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
  * Output: 2
  */
-public class A_NUMBER_OF_PROVINCE_LC_547 {
+public class A_NUMBER_OF_PROVINCE_DFS_LC_547 {
     static void main() {
 
         int[][] isConnected = {{1,1,0}, {1,1,0},{0,0,1}};
@@ -24,6 +24,28 @@ public class A_NUMBER_OF_PROVINCE_LC_547 {
         // 0  1 1 0
         // 1  1 1 0
         // 2  0 0 1
+
+        /**
+         *
+         * m[0][0] -> 1 -> need to skip it
+         * m[0][1] -> 1 --> city 0 is connected to city 1
+         * m[0][2] -> 0
+
+         * m[1][0] -> 1 --> city 1 is connected to city 0
+         * m[1][1] -> 1 -> need to skip it
+         * m[1][2] -> 0
+
+         * m[2][0] -> 0
+         * m[2][1] -> 0
+         * m[2][2] -> 1 -> need to skip it [--> city 3 is not connected to any city]
+         *
+         * [[1], [0], []]
+         *
+         * adj
+         * 0 -> 1
+         * 1 -> 0
+         * 2 -> none
+         */
 
 
         int n = isConnected.length;
@@ -34,8 +56,7 @@ public class A_NUMBER_OF_PROVINCE_LC_547 {
 
         for(int i =0; i< n ; i++){
             for (int j =0; j < n; j++){
-                if(isConnected[i][j]==1){
-                    adj[j].add(i);
+                if(isConnected[i][j]==1 && !adj[i].contains(j) && i != j){
                     adj[i].add(j);
                 }
             }
