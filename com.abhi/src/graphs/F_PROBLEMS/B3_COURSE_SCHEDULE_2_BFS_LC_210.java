@@ -2,7 +2,7 @@ package graphs.F_PROBLEMS;
 
 import java.util.*;
 
-public class E_COURSE_SCHEDULE_2_BFS_LC_210 {
+public class B3_COURSE_SCHEDULE_2_BFS_LC_210 {
     static void main() {
         BFS2Solution solution = new BFS2Solution();
         int[][] edges = {{0, 1}, {1, 2}, {1, 3}, {2, 4}, {3, 4}};

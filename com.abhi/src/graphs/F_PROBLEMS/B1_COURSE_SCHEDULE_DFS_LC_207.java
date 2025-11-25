@@ -23,7 +23,7 @@ import java.util.List;
  * To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
  *
  */
-public class C_COURSE_SCHEDULE_DFS_LC_207 {
+public class B1_COURSE_SCHEDULE_DFS_LC_207 {
     static void main() {
         Solution solution= new Solution();
         if(solution.canFinish(2, new int[][]{{1,0}})){

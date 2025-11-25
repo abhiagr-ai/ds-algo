@@ -15,7 +15,7 @@ import java.util.*;
  * Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
  * Output: 2
  */
-public class A_NUMBER_OF_PROVINCE_DFS_LC_547 {
+public class A1_NUMBER_OF_PROVINCE_DFS_LC_547 {
     static void main() {
 
         int[][] isConnected = {{1,1,0}, {1,1,0},{0,0,1}};

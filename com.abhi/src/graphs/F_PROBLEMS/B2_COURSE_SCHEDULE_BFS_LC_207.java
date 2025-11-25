@@ -22,7 +22,7 @@ import java.util.*;
  * To take course 1 you should have finished course 0, and to take course 0 you should also have finished course 1. So it is impossible.
  *
  */
-public class D_COURSE_SCHEDULE_BFS_LC_207 {
+public class B2_COURSE_SCHEDULE_BFS_LC_207 {
     static void main() {
         BFSSolution solution = new BFSSolution();
         int[][] edges = {{0, 1}, {1, 2}, {1, 3}, {2, 4}, {3, 4}};
