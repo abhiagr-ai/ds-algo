@@ -1,4 +1,4 @@
-package graphs.F_PROBLEMS;
+package graphs.F_PROBLEMS.a_number_of_provinces;
 
 import java.util.*;
 

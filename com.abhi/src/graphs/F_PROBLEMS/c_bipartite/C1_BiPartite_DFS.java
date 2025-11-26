@@ -1,10 +1,12 @@
-package graphs.F_PROBLEMS;
+package graphs.F_PROBLEMS.c_bipartite;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class C2_BiPartite_BFS {
+public class C1_BiPartite_DFS {
     static void main() {
-        BiBFSPartiteSolution biPartiteSolution = new  BiBFSPartiteSolution();
+        BiDFSPartiteSolution biPartiteSolution = new  BiDFSPartiteSolution();
 
         // 0 --> 3 1 --> 2
         System.out.println(biPartiteSolution.isBipartite(4, new int[][]{{0, 3}, {1, 2}, {3, 2}, {0, 2}}));
@@ -12,7 +14,7 @@ public class C2_BiPartite_BFS {
     }
 }
 
-class BiBFSPartiteSolution{
+class BiDFSPartiteSolution{
     boolean isBipartite(int V, int[][] edges){
         List<Integer>[] adj = getAdj(V, edges);
         int[] color = new int[V];
@@ -23,7 +25,7 @@ class BiBFSPartiteSolution{
 
         for(int i =0; i < V; i++){
             if(color[i]==-1){
-                if(!bfs(adj, color, i, 1)){
+                if(!dfs(adj, color, i, 1)){
                     return false;
                 };
             }
@@ -31,22 +33,18 @@ class BiBFSPartiteSolution{
         return true;
     }
 
-    boolean bfs(List<Integer>[] adj, int[] color, int startNode, int paintColor) {
-        Queue<Integer> q = new ArrayDeque<>();
-        color[paintColor] = paintColor;
-        q.offer(startNode);
+    boolean dfs(List<Integer>[] adj, int[] color, int u, int paintColor){
+        color[u] = paintColor;
 
-        while (!q.isEmpty()) {
-            int u = q.poll();
-            for (int v : adj[u]) {
-                if (color[v] == color[u]) {
+        for(int v: adj[u]){
+            if(color[v] == paintColor){
+                return false;
+            }
+            if(color[v] == -1){
+                int nextColor = 1 - paintColor;
+                if(!dfs(adj, color, v, nextColor)){
                     return false;
-                }
-                if (color[v] == -1) {
-                    int nextColor = 1 - paintColor;
-                    q.offer(v);
-                    color[v] = nextColor;
-                }
+                };
             }
         }
         return true;
@@ -67,3 +65,4 @@ class BiBFSPartiteSolution{
         return adj;
     }
 }
+

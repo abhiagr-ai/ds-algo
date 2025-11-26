@@ -1,4 +1,4 @@
-package graphs.F_PROBLEMS;
+package graphs.F_PROBLEMS.b_course_schedule;
 
 import java.util.ArrayList;
 import java.util.List;

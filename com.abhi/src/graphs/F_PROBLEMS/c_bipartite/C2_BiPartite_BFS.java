@@ -1,12 +1,11 @@
-package graphs.F_PROBLEMS;
+package graphs.F_PROBLEMS.c_bipartite;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
-public class C1_BiPartite_DFS {
+// LC 785
+public class C2_BiPartite_BFS {
     static void main() {
-        BiDFSPartiteSolution biPartiteSolution = new  BiDFSPartiteSolution();
+        BiBFSPartiteSolution biPartiteSolution = new  BiBFSPartiteSolution();
 
         // 0 --> 3 1 --> 2
         System.out.println(biPartiteSolution.isBipartite(4, new int[][]{{0, 3}, {1, 2}, {3, 2}, {0, 2}}));
@@ -14,7 +13,7 @@ public class C1_BiPartite_DFS {
     }
 }
 
-class BiDFSPartiteSolution{
+class BiBFSPartiteSolution{
     boolean isBipartite(int V, int[][] edges){
         List<Integer>[] adj = getAdj(V, edges);
         int[] color = new int[V];
@@ -25,7 +24,7 @@ class BiDFSPartiteSolution{
 
         for(int i =0; i < V; i++){
             if(color[i]==-1){
-                if(!dfs(adj, color, i, 1)){
+                if(!bfs(adj, color, i, 1)){
                     return false;
                 };
             }
@@ -33,18 +32,22 @@ class BiDFSPartiteSolution{
         return true;
     }
 
-    boolean dfs(List<Integer>[] adj, int[] color, int u, int paintColor){
-        color[u] = paintColor;
+    boolean bfs(List<Integer>[] adj, int[] color, int startNode, int paintColor) {
+        Queue<Integer> q = new ArrayDeque<>();
+        color[paintColor] = paintColor;
+        q.offer(startNode);
 
-        for(int v: adj[u]){
-            if(color[v] == paintColor){
-                return false;
-            }
-            if(color[v] == -1){
-                int nextColor = 1 - paintColor;
-                if(!dfs(adj, color, v, nextColor)){
+        while (!q.isEmpty()) {
+            int u = q.poll();
+            for (int v : adj[u]) {
+                if (color[v] == color[u]) {
                     return false;
-                };
+                }
+                if (color[v] == -1) {
+                    int nextColor = 1 - paintColor;
+                    q.offer(v);
+                    color[v] = nextColor;
+                }
             }
         }
         return true;
@@ -65,4 +68,3 @@ class BiDFSPartiteSolution{
         return adj;
     }
 }
-
