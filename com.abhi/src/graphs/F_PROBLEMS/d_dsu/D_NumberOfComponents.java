@@ -94,3 +94,16 @@ public class D_NumberOfComponents {
     }
 }
 
+
+/*
+find returning 0 with parent [0, 1, 2, 3]
+find returning 1 with parent [0, 1, 2, 3]
+rank x=y:union x 0 with y 1 parent [0, 0, 2, 3] rank [2, 1, 1, 1]
+find returning 0 with parent [0, 0, 2, 3]
+find returning 2 with parent [0, 0, 2, 3]
+union x 0 with y 2
+rank x>y: union x 0 with y 2 parent [0, 0, 0, 3] rank [2, 1, 1, 1]
+find returning 0 with parent [0, 0, 0, 3]
+find returning 0 with parent [0, 0, 0, 3]
+1
+ */
