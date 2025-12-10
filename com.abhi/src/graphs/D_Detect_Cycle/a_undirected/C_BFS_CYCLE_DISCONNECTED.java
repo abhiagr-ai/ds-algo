@@ -9,6 +9,15 @@ public class C_BFS_CYCLE_DISCONNECTED {
         // edge list only, vertices can be different
         int[][] edges = {{0,1},{1,2},{1,3},{0,3},{2,4},{3,4},{5,6},{6,7},{7,5}};
         int V = 8;
+        /**
+         *     0---1---2
+         *     |   |   |
+         *     +---3---4
+         *
+         *     5---6
+         *     |   |
+         *     +---7
+         */
         int cycleCount = bfs_prep(V, edges);
         System.out.println("cycle count "+ cycleCount);
     }
