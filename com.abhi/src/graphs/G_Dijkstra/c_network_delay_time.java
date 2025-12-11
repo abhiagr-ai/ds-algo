@@ -85,6 +85,4 @@ public class c_network_delay_time {
         }
         return result;
     }
-
-
 }
