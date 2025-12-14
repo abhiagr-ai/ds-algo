@@ -49,7 +49,6 @@ public class a_Bellmen_Ford {
         s2.relax(edges, result2);
         return Arrays.equals(result2, result) ? result : new int[]{-1};
     }
-
 }
 
 
