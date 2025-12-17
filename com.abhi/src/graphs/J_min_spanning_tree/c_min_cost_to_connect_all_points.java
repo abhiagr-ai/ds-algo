@@ -18,7 +18,6 @@ public class c_min_cost_to_connect_all_points {
         KruskalAlgo s = new KruskalAlgo();
         System.out.println(s.run(input));
     }
-
 }
 
 class KruskalAlgo{
