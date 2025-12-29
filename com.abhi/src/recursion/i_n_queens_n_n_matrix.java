@@ -52,6 +52,7 @@ class SolutionNQ {
     void placeQueens(List<String> board, int rowIndex) {
 
         if (rowIndex >= board.size()) {
+            // **** focus
             results.add(new ArrayList<>(board));
             return;
         }
@@ -101,10 +102,5 @@ class SolutionNQ {
  * ├───┼───┼───┼───┤
  * │ . │ Q │ . │ . │
  * └───┴───┴───┴───┘
- *
- *
- *
- *
- *
  *
  */
