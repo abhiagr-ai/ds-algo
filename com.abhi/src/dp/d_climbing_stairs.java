@@ -35,6 +35,9 @@ public class d_climbing_stairs {
 
         SolutionBottomUp dps = new SolutionBottomUp();
         System.out.println(dps.ways2Climb(45));
+
+        SolutionBottomUpSC dpZeroSC = new SolutionBottomUpSC();
+        System.out.println(dpZeroSC.ways2Climb(45));
     }
 
 }
@@ -105,5 +108,27 @@ class SolutionBottomUp{
             System.out.println("calling for i="+i + " with waysToClimbKthStair = "+ Arrays.toString(waysToClimbKthStair));
         }
         return waysToClimbKthStair[n];
+    }
+}
+
+class SolutionBottomUpSC{
+    int ways2Climb(int n){
+
+        if(n==0|| n==1 || n==2){
+            return n;
+        }
+
+        int a = 1; // i -2
+        int b = 2; // i -1
+        int c = 3;
+
+        // fill the array
+        for(int i =3; i <=n ; i++){
+            c = a + b;
+            int temp_b = b;
+            b = c;
+            a = temp_b;
+        }
+        return c;
     }
 }
