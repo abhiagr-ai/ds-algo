@@ -102,18 +102,18 @@ class C_Recursion {
         maxRobberyTillHouse[2] = Math.max(houses[0], houses[1]);
 
         //maxRobberyTillHouse - 3
-        maxRobberyTillHouse[3] = Math.max(
-                // max till last house or i-1
-                maxRobberyTillHouse[2],
-                // max till i-2, and wealth in current house which is i-1 from house array
-                maxRobberyTillHouse[3 - 2] + houses[3 - 1]);
+//        maxRobberyTillHouse[3] = Math.max(
+//                // max till last house or i-1
+//                maxRobberyTillHouse[2],
+//                // max till i-2, and wealth in current house which is i-1 from house array
+//                maxRobberyTillHouse[3 - 2] + houses[3 - 1]);
 
         //maxRobberyTillHouse - 4
-        maxRobberyTillHouse[4] = Math.max(
-                // max till last house or i-1
-                maxRobberyTillHouse[4 - 1],
-                // max till i-2, and wealth in current house which is i-1 from house array
-                maxRobberyTillHouse[4 - 2] + houses[4 - 1]);
+//        maxRobberyTillHouse[4] = Math.max(
+//                // max till last house or i-1
+//                maxRobberyTillHouse[4 - 1],
+//                // max till i-2, and wealth in current house which is i-1 from house array
+//                maxRobberyTillHouse[4 - 2] + houses[4 - 1]);
 
         //maxRobberyTillHouse - i
         //        maxRobberyTillHouse[i] = Math.max(
