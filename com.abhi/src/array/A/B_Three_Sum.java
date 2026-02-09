@@ -1,7 +1,8 @@
 package array.A;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.List;
 
 
 /*
@@ -29,15 +30,39 @@ public class B_Three_Sum {
         int[] input = {-1,0,1,2,-1,-4};
         int target = 0;
         int[][] expectedAns = new int[][]{{-1,-1,2},{-1,0,1}};
-        int[][] answer = solveBruteForce(input, target);
-        System.out.println(Arrays.toString(answer));
+        List<List<Integer>> ans = new ArrayList<>();
+        solve(input, target, ans);
+        System.out.println(ans);
     }
 
-    private static int[][] solveBruteForce(int[] input, int target) {
+    private static void solve(int[] input, int target, List<List<Integer>> ans) {
+        for(int i =0; i < input.length -2; i++){
+            int n1 = input[i];
+            if(i > 1 && input[i]==input[i-1]){
+                continue;
+            }
+            twoSum(input, target, n1*-1, i+1, ans);
+        }
+    }
 
-
-
-        return new int[][]{{-1}};
+    private static void twoSum(int[] input, int target, int n1, int i, List<List<Integer>> ans) {
+        int p = i;
+        int q = input.length-1;
+        while(p < q) {
+            if(input[p] + input[q] > n1){
+                q--;
+            } else if (input[p] + input[q] < n1){
+                p++;
+            } else {
+                while(p < q && input[p] == input[p+1]){
+                    p++;
+                }
+                while(p < q && input[q] == input[q-1]){
+                    q--;
+                }
+                ans.add(List.of(n1*-1, input[p], input[q]));
+            }
+        }
     }
 
 }
