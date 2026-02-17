@@ -29,29 +29,31 @@ public class B_Three_Sum {
     static void main() {
         int[] input = {-1,0,1,2,-1,-4};
         int target = 0;
-        int[][] expectedAns = new int[][]{{-1,-1,2},{-1,0,1}};
         List<List<Integer>> ans = new ArrayList<>();
         solve(input, target, ans);
         System.out.println(ans);
     }
 
     private static void solve(int[] input, int target, List<List<Integer>> ans) {
+        Arrays.sort(input);
         for(int i =0; i < input.length -2; i++){
             int n1 = input[i];
-            if(i > 1 && input[i]==input[i-1]){
+            int twoSumTarget = target - n1;
+            if(i >= 1 && input[i]==input[i-1]){
                 continue;
             }
-            twoSum(input, target, n1*-1, i+1, ans);
+            System.out.println("calling twoSum "+ twoSumTarget + Arrays.toString(input) + " "+(i+1));
+            twoSum(input, twoSumTarget,i+1, ans, target);
         }
     }
 
-    private static void twoSum(int[] input, int target, int n1, int i, List<List<Integer>> ans) {
+    private static void twoSum(int[] input, int twoSumTarget, int i, List<List<Integer>> ans, int target) {
         int p = i;
         int q = input.length-1;
         while(p < q) {
-            if(input[p] + input[q] > n1){
+            if(input[p] + input[q] > twoSumTarget){
                 q--;
-            } else if (input[p] + input[q] < n1){
+            } else if (input[p] + input[q] < twoSumTarget){
                 p++;
             } else {
                 while(p < q && input[p] == input[p+1]){
@@ -60,7 +62,9 @@ public class B_Three_Sum {
                 while(p < q && input[q] == input[q-1]){
                     q--;
                 }
-                ans.add(List.of(n1*-1, input[p], input[q]));
+                p++;
+                q--;
+                ans.add(List.of(target-twoSumTarget, input[p], input[q]));
             }
         }
     }
